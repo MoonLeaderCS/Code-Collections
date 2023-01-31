@@ -1,0 +1,30 @@
+import java.util.*;
+import java.io.*;
+public class Main
+{
+	public static void main(String[] args) {
+		int arr[]={9981,9,998,99};
+		Arrays.sort(arr);
+		boolean flag=true;
+		for(int i=0;i<arr.length-1;i++)
+		{
+		    String temp=String.valueOf(arr[i]);
+		    for(int j=i+1;j<arr.length;j++)
+		    {
+		        String temp2=String.valueOf(arr[j]);
+		        if(temp2.indexOf(temp)==0)
+		        {
+		            flag=false;
+		            break;
+		        }
+		    }
+		}
+		if(flag==true)
+		{
+		    System.out.println("No");
+		}
+		else{
+		    System.out.println("Yes");
+		}
+	}
+}
