@@ -1,0 +1,73 @@
+import java.util.*;
+import java.io.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		
+		int x=sc.nextInt();
+		int y=sc.nextInt();
+    String pos=sc.next();
+    sc.nextLine();
+    String path=sc.next();
+        
+		char a=pos.charAt(0);
+		char b=pos.charAt(2);
+		char c=pos.charAt(4);
+		
+    int a1= a - 48;    //int a1=Character.getNumericValue(a);
+    int b1= b - 48;    //int b1=Character.getNumericValue(b); 
+    
+		int count=0;
+		for(int i=0; i<path.length(); i++)
+		{
+		    char t=path.charAt(i);
+		    if(t=='L')
+		    {
+    		    if (c=='N') 
+    		    c='W';
+    		    else if(c=='E')
+    		    c='N';
+    		    else if(c=='S')
+    		    c='E';
+    		    else if(c=='W')
+    		    c='S';
+		    }
+		    else if(t=='R')
+		    {
+		       if(c=='N')
+		       c='E';
+		       else if(c=='E')
+		       c='S';
+		       else if(c=='S')
+		       c='W';
+		       else if(c=='W')
+		       c='N';
+		    }
+		    else if(t=='M')
+		    {
+		        if(c=='N')
+		        b1++;
+		        else if(c=='E')
+		        a1++;
+		        else if(c=='S')
+		        b1--;
+		        else if(c=='W')
+		        a1--;
+		    }
+        
+		    if(a1>x || b1>y)
+		    {
+    		    count++;
+    		    if(a1>x)
+		        a1--;
+		        else if(b1>y)
+		        b1--;
+		        System.out.println(a1+"-"+b1+"-"+c+"-ERROR");
+		        break;
+		    }
+		}
+        if(count==0)
+	    System.out.println(a1+"-"+b1+"-"+c);
+	}
+}
