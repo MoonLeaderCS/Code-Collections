@@ -1,0 +1,59 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <algorithm>
+
+#include <iostream>
+using namespace std;
+
+void printPattern(int row)
+{
+    int x = 1;
+    int z = (row * row) + 1;
+    int col = row == 1 ? 1 : (row * 4) - 1;
+     
+    for(int i = 1; i <= row; i++)
+    {
+        int t = z;
+        for(int j = 1; j <= col - ((i - 1) * 2); j++)
+        {
+            if ((i * 2) - 2 >= j)
+            {
+                cout << "-";
+            }
+            else
+            {
+                if(col == 1)
+                {
+                    cout << x;
+                }
+                else if(j <= col/2 && j % 2 == 1)
+                {
+                    cout << x;
+                    x++;
+                }
+                else if(j > col/2 && j % 2 == 1)
+                {
+                    cout << t;
+                    t++;
+                }
+                else
+                {
+                    cout << "*";
+                }
+            }                
+        }
+        z = (z - row) + i;
+        cout << "\n";
+    }
+}
+ 
+ int main()
+{
+    int row=3;
+    printPattern(row);
+
+    return 0;
+}
+ 
+
