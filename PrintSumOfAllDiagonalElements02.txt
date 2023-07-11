@@ -1,0 +1,39 @@
+//Print Sum of All Diagonal Elements from BottomLeft to TopRight
+
+import java.io.*;
+import java.util.*;
+
+public class Main
+{
+	public static void main(String[] args) 
+	{
+    	int a[][]={ {6, 4, 2, 8},
+    	            {1, 3, 2, 1},
+    	            {2, 1, 4, 9},
+    	            {6, 3, 2, 4}};
+		        
+		int s=0, n=a.length;
+		for(int i=n-1; i>=0; i--)
+		{
+		    s=0;
+		    for(int j=0,k=i; j<n-i; j++)
+		    {
+		        s += a[k][j];
+		        k++;
+		    }
+		    System.out.print(s+" ");
+		}
+		int t = n-1, x=1;
+		while(t-->0)
+		{
+		    s=0;
+		    for(int j=x,k=0; j<n; j++)
+		    {
+		        s += a[k][j];
+		        k++;
+		    }
+		    x++;
+		    System.out.print(s+" ");
+		}
+	}
+}
