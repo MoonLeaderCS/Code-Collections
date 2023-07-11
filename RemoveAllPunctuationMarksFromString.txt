@@ -1,0 +1,19 @@
+import java.io.*;
+import java.util.*;
+
+class Main {
+    public static void main(String args[])
+    {
+        // Remove all punctuation marks from the string only and, 
+	// Leave letters, digits, and whitespace in the result:
+        // using the standard String.replaceAll() method:
+        
+        String s = "It's  String S10 __(~`!@#$%^&*(){}[]<>-+*/_=|:;',.?\")__before this all punctuations are removed";
+        String res="";
+        // res = s.replaceAll("[^\\s[0-9][a-z][A-Z]]", "");  //  works only for input strings with ASCII characters
+        // res = s.replaceAll("[^\\s[0-9]\\p{L}]", "");     // works for both ASCII and Unicode strings
+        res = s.replaceAll("\\p{Punct}", "");             // works for both ASCII and Unicode strings
+        
+        System.out.println(res);
+    }  
+}
