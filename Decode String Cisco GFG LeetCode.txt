@@ -1,0 +1,55 @@
+import java.io.*;
+import java.util.*;
+
+public class Main
+{
+	public static void main(String[] args) 
+	{
+		String s = "3[b2[ca]]";         
+		//  "3[a]2[bc]"
+		//  "3[a2[c]]" 
+		//  "2[abc]3[cd]ef"
+		
+		Stack<Character> st = new Stack<>();
+        for(int i=0; i<s.length(); i++)
+        {
+            if(s.charAt(i) == ']') 
+            {
+                String temp = "";
+                while(st.peek() != '[')
+                {
+                    temp = st.pop() + temp;
+                }
+                
+                st.pop();          // popping of '['
+
+                // for calculating 'number' for repeating temp String
+                String num = "";
+                while(!st.isEmpty() && Character.isDigit(st.peek()))
+                {
+                    num = st.pop() + num;
+                }
+
+                int number = Integer.parseInt(num);    // convert string to int
+                // push the char of temp String by 'number' times into stack
+                while(number-->0)
+                {
+                    for(int j=0; j<temp.length() ; j++)
+                        st.push(temp.charAt(j));
+                }
+            }
+            else
+            {
+                st.push(s.charAt(i));
+            }
+        }
+        
+        String res = "";
+        while(!st.isEmpty())
+        {
+            res = st.pop() + res;
+        }
+
+        System.out.println(res);
+	}
+}
